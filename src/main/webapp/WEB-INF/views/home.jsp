@@ -7,6 +7,12 @@
 <body>
 	<h1>DICE GAME</h1>
 	
-	<p> <a href="${pageContext.request.contextPath}/score">show current score</a> </p>
+	<form action="${pageContext.request.contextPath}/dicegame" method="get">
+		<input type="text" name="name"/>
+		<input type="submit" value="PLAY"/>
+	</form>
+	
+	<input type="button" name="configure" onclick="location.href='configure'" value="Configure" />
+	<input type="button" onclick="window.close();" value="Exit" />
 </body>
 </html>
