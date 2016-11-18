@@ -27,7 +27,7 @@
 		</tr>
 	</table>
 
-	<form action="${pageContext.request.contextPath}/roll" method="get">
+	<form action="${pageContext.request.contextPath}/roll" method="post">
 		<input type="submit" value="roll" />
 	</form>
 

@@ -7,6 +7,8 @@
 <title>Result</title>
 </head>
 <body>
+	<h2>PLAY THE GAME</h2>
+
 	${playerName}
 	${message}
 	

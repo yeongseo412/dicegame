@@ -21,4 +21,12 @@ public class ScoreService {
 	public List<Score> getCurrent() {
 		return scoreDao.getScores();
 	}
+	
+	public Score searchPlayer(String name) {
+		return scoreDao.getScore(name);
+	}
+	
+	public boolean insert(Score score){
+		return scoreDao.insert(score);
+	}
 }

@@ -8,8 +8,7 @@ import kr.ac.hansung.model.WinningStatus;
 @Service
 public class DicegameService {
 	private static final DicegameService instance = new DicegameService();
-	
-	private int[] map;
+
 	int Goal = 29;
 
 	private Dice dice1;
@@ -37,12 +36,13 @@ public class DicegameService {
 		faceValue2 = 0;
 		curCell1 = 0;
 		curCell2 = 0;
-
+		/*
 		map = new int[30];
 
 		for (int i=0; i<30; i++) {
 			map[i] = i;
 		}
+		*/
 	}
 
 	public void init() {
@@ -100,5 +100,21 @@ public class DicegameService {
 	
 	public WinningStatus getWs() {
 		return ws;
+	}
+	
+	public String getResultMessage(WinningStatus ws) {
+		
+		String message;
+		
+		if(ws == WinningStatus.Draw)
+			message = "Draw!";
+		else if(ws == WinningStatus.Player)
+			message = "Win!";
+		else
+			message = "Lose!";
+		
+		this.ws = WinningStatus.NotYet;
+		
+		return message;
 	}
 }
