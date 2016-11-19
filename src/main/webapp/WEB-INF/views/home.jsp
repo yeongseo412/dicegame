@@ -12,7 +12,10 @@
 		<input type="submit" value="PLAY"/>
 	</form>
 	
-	<input type="button" name="configure" onclick="location.href='configure'" value="Configure" />
+	<form action="${pageContext.request.contextPath}/configure" method="post">
+		<input type="submit" value="Configure" />
+	</form>
+	
 	<input type="button" onclick="window.close();" value="Exit" />
 </body>
 </html>

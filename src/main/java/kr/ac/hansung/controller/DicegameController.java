@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.hansung.model.Score;
 import kr.ac.hansung.model.WinningStatus;
+import kr.ac.hansung.service.ConfigureService;
 import kr.ac.hansung.service.DicegameService;
 import kr.ac.hansung.service.ResultService;
 import kr.ac.hansung.service.ScoreService;
@@ -22,7 +23,18 @@ public class DicegameController {
 	private DicegameService dicegameService;
 	private ScoreService scoreService;
 	private ResultService resultService;
+	private ConfigureService configureService;
 	
+	@Autowired
+	public void setConfigureService(ConfigureService configureService) {
+		this.configureService = configureService;
+	}
+	@Autowired
+	public void setDicegameService(DicegameService dicegameService) {
+		this.dicegameService = dicegameService;
+		
+		dicegameService.setMap(configureService.getMap());
+	}
 	@Autowired
 	public void setResultService(ResultService resultService) {
 		this.resultService = resultService;
@@ -31,10 +43,7 @@ public class DicegameController {
 	public void setScoreService(ScoreService scoreService) {
 		this.scoreService = scoreService;
 	}
-	@Autowired
-	public void setDicegameService(DicegameService dicegameService) {
-		this.dicegameService = dicegameService;
-	}
+	
 
 	@RequestMapping("/dicegame")
 	public String dicegame(HttpServletRequest request, Model model, HttpSession session) {
@@ -70,6 +79,8 @@ public class DicegameController {
 			
 			ws = dicegameService.getWs();
 			resultService.setScore(player, ws);
+			
+			configureService.init();
 			
 			model.addAttribute("message", dicegameService.getResultMessage(ws));
 			page = "result";
