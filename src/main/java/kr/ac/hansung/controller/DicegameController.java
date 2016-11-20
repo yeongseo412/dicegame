@@ -54,6 +54,9 @@ public class DicegameController {
 			player = new Score(name, 0, 0, 0);
 			scoreService.insert(player);
 		}
+		else {
+			player = scoreService.searchPlayer(name);
+		}
 		
 		session.setAttribute("playerName", name);
 		
